@@ -58,38 +58,67 @@ int main()
 
     float f = 3.14f;
     fr(f);          // Pretizeni funkce 'fr'
-    frr(ii) = 5;    // Vrati se misto, kde lezi 'ii' a do nej se zapise 5.
+    frr(ii) = 7;    // Vrati se misto, kde lezi 'ii' a do nej se zapise 5.
 
     cout << "f: " << f << '\n';
     cout << ii << '\n';
-    cout << ri << '\n';
+    cout << ri << '\n' << '\n';
 // --------------------------------------------------------------------------------
 
 // ------------------------------ funkce TVector ----------------------------------
-    TVector v;
+    TVector v, v1, v2, vRes;
     try
     {
         AllocVector(v, 10);
         Set(v, 9, 5.0);
-        cout << Get(v, 9) << '\n';
+        cout << Get(v, 9) << '\n' << '\n';
+
+        AllocVector(v1, 10);
+        AllocVector(v2, 10);
+        AllocVector(vRes, 10);
+
+        for (size_t i = 0; i < v1.iSize; i++)
+            Set(v1, i, (double)(i + 1.0));
+        for (size_t i = 0; i < v2.iSize; i++)
+            Set(v2, i, (double)3.0);
+
+        Add(vRes, v1, v2);
+
+        for (size_t i = 0; i < v.iSize; i++)
+            cout << Get(v1, i) << '\t';
+        cout << '\n';
+        for (size_t i = 0; i < v.iSize; i++)
+            cout << Get(v2, i) << '\t';
+        cout << '\n';
+        for (size_t i = 0; i < v.iSize; i++)
+            cout << Get(vRes, i) << '\t';
+        cout << '\n';
+
+        Add(vRes, v1, 2);
+        for (size_t i = 0; i < v.iSize; i++)
+            cout << Get(vRes, i) << '\t';
+        cout << '\n';
     }
 
-    catch (char aStr[])
+    catch (const char aStr[])
     {
         cout << "Vyjimka: " << aStr << '\n';
     }
 
     catch (std::bad_alloc exc)
     {
-        cout << "Vyjimka bad_alloc: " << exc.what() << '\n';    // exc.what() ... kde vznikla vyjimka
+        cout << "vyjimka bad_alloc: " << exc.what() << '\n';    // exc.what() ... kde vznikla vyjimka
     }
 
     catch (...)
     {
-        cout << "Obecna vyjimka\n";
+        cout << "obecna vyjimka\n";
     }
 
     DeallocVector(v);
+    DeallocVector(v1);
+    DeallocVector(v2);
+    DeallocVector(vRes);
 // --------------------------------------------------------------------------------
     return 0;
 }
