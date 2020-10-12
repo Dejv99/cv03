@@ -39,3 +39,27 @@ void DeallocVector(TVector& aVec)
     delete[] aVec.iData;
     aVec.iSize = aVec.iCapacity = 0;
 }
+
+int Add(TVector& aRes, const TVector& aVec1, const TVector& aVec2)
+{
+    if (!aVec1.iData || !aVec2.iData || !aRes.iData)
+        throw "Nektery ze vstupnich vektoru je nenaalokovan";
+    if ((aVec1.iSize || aVec2.iSize) != aRes.iSize)
+        throw "Vstupni vektory nemaji stejnou delku";
+
+    for (size_t i = 0; i < aVec1.iSize; i++)
+        aRes.iData[i] = aVec1.iData[i] + aVec2.iData[i];
+    return 0;
+}
+
+int Add(TVector& aRes, const TVector& aVec1, double aVal = 0)
+{
+    if (!aVec1.iData || !aRes.iData)
+        throw "Nektery ze vstupnich vektoru je nenaalokovan";
+    if (aVec1.iSize != aRes.iSize)
+        throw "Vstupni vektory nemaji stejnou delku";
+
+    for (size_t i = 0; i < aVec1.iSize; i++)
+        aRes.iData[i] = aVec1.iData[i] + aVal;
+    return 0;
+}
