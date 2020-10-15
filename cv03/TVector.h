@@ -9,7 +9,7 @@ struct TVector
     // double * const iData = nullptr;  <-- lze zmenit adresu v pointeru, ale data (na ktere ukazuje) zmenit NEjdou
 };
 
-double Get(TVector& aVec, size_t aIndex);
+double Get(const TVector& aVec, size_t aIndex);
 
 void Set(TVector& aVec, size_t aIndex, double aVal);
 
@@ -20,3 +20,11 @@ void DeallocVector(TVector& aVec);
 int Add(TVector& aRes, const TVector& aVec1, const TVector& aVec2);
 
 int Add(TVector& aRes, const TVector& aVec1, double aVal = 0);
+
+// Inicializace double aVal na 0 provede ve skutecnosti toto:
+//inline void Add(TVector aRes, TVector aVec)
+//{
+//    Add(TVector aRes, TVector aVec, 0);   <-- Z hlavicky se vytahne inicializacni hodnota
+//}
+
+void DumpVector(const TVector& aVec, const char* aStr = nullptr);

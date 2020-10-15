@@ -67,21 +67,34 @@ int main()
 // --------------------------------------------------------------------------------
 
 // ------------------------------ funkce TVector ----------------------------------
-    TVector v, v1, v2, vRes;
+    TVector v, v1, v2, v3, vRes;
     try
     {
         AllocVector(v, 10);
-        Set(v, 9, 5.0);
-        cout << Get(v, 9) << '\n' << '\n';
 
+        Set(v, 9, 5.0);
+        cout << Get(v, 9) << '\n';
+
+        TVector v1, v2, v3;
         AllocVector(v1, 10);
         AllocVector(v2, 10);
-        AllocVector(vRes, 10);
+        AllocVector(v3, 10);
 
-        for (size_t i = 0; i < v1.iSize; i++)
-            Set(v1, i, (double)(i + 1.0));
-        for (size_t i = 0; i < v2.iSize; i++)
-            Set(v2, i, (double)3.0);
+        for (size_t i = 0; i < 10; ++i)
+        {
+            Set(v1, i, i);
+            Set(v2, i, 10 + i);
+        }
+
+        DumpVector(v1);
+        DumpVector(v2);
+        DumpVector(v3);
+
+        Add(v3, v2, v1); // do v3 = v1 +v2
+
+        DumpVector(v1, "v1");
+        DumpVector(v2, "v2");
+        DumpVector(v3, "v3");
 
         Add(vRes, v1, v2);
 
@@ -119,6 +132,7 @@ int main()
     DeallocVector(v);
     DeallocVector(v1);
     DeallocVector(v2);
+    DeallocVector(v3);
     DeallocVector(vRes);
 // --------------------------------------------------------------------------------
     return 0;
