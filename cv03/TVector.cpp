@@ -1,7 +1,8 @@
 #pragma once
 #include "TVector.h"
+#include "C:/GitHub/BPC-PPC/checker/check.h"
 
-double Get(TVector& aVec, size_t aIndex)
+double Get(const TVector& aVec, size_t aIndex)
 {
     if (aVec.iSize <= aIndex)
         throw "Index mimo vektor";

@@ -5,6 +5,8 @@ struct TVector
     size_t iSize = 0;
     size_t iCapacity = 0;
     double* iData = nullptr;
+    // const double* iData = nullptr;   <-- NElze zmenit adresu v pointeru, ale data (na ktere ukazuje) zmenit jdou
+    // double * const iData = nullptr;  <-- lze zmenit adresu v pointeru, ale data (na ktere ukazuje) zmenit NEjdou
 };
 
 double Get(TVector& aVec, size_t aIndex);

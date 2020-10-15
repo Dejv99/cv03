@@ -139,10 +139,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\checker\check.cpp" />
     <ClCompile Include="main-cv03.cpp" />
     <ClCompile Include="TVector.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\checker\check.h" />
     <ClInclude Include="TVector.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
